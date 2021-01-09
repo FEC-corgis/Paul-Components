@@ -1,6 +1,6 @@
 # Project Name
 
-> Project description
+AirBnB clone
 
 ## Related Projects
 
