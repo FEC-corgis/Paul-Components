@@ -1,2 +1,4 @@
-# Paul-Components
-Map and hosted by 
+# Paul-Services
+AirBnB Map service & Entire House hosted by sections
+
+
