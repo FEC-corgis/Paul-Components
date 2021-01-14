@@ -5,6 +5,7 @@ This is a full front-end capstone of AirBnB's property listing page. The compone
 ## Related Projects
 
   - https://github.com/FEC-corgis/Paul-Proxy
+  - https://github.com/FEC-corgis/Paul-Service-Entire_house
   - https://github.com/FEC-corgis/Dane-Service
   - https://github.com/FEC-corgis/Dane-Proxy
   - https://github.com/FEC-corgis/Jenny-FEC-service
