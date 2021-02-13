@@ -8,8 +8,8 @@ app.use(express.static(path.join(__dirname, '../client')));
 app.use(bp.urlencoded({extended: true}));
 app.use(bp.json());
 
-app.get('/map/', (req,res)=>{
-  console.log('display map!');
+app.get('/map/:id', (req,res)=>{
+  res.send('mapppppp');
 });
 
 app.listen(port, ()=>console.log('Server is listening on port '+port));
