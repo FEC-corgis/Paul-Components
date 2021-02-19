@@ -1,9 +1,8 @@
 const db = require('./index');
-
-const cityState = [['New York City', 'New York'], ['Los Angeles', 'California'], ['Chicago', 'Illinois'], ['Houston', 'Texas'], ['Phoenix', 'Arizona'], ['Philadelphia', 'Pennsylvania'], ['San Antonio', 'Texas'], ['San Diego', 'California'], ['Baltimore', 'Maryland'], ['South Lake Tahoe', 'California'], ['Portland', 'Oregon'], ['Las Vegas', 'Nevada'], ['Atlanta', 'Georgia'], ['Tampa', 'Florida'], ['Miami', 'Florida'], ['Detroit', 'Michigan'], ['Nashville', 'Tennessee'], ['Seattle', 'Washington'], ['Charlotte', 'North Carolina'], ['Boston', 'Massachusetts'], ['Denver', 'Colorado'], ['Seattle', 'Washington'], ['Columbus', 'Ohio'], ['New Orleans', 'Louisiana'], ['Charleston', 'South Carolina'], ['Santa Fe', 'New Mexico'], ['Savannah', 'Georgia'], ['Honolulu', 'Hawaii'], ['Williamsburg', 'Virginia'], ['San Francisco', 'California'], ['St. Louis', 'Missouri'], ['Branson', 'Missouri'], ['Savannah', 'Georgia'], ['Indianapolis', 'Indiana']];
+const {cityState, description} = require('./junk');
 
 const selectCityState = () => {
-  return cityState[Math.floor(Math.random() * cityState.length)];
+  return cityState.cityState[Math.floor(Math.random() * cityState.cityState.length)];
 };
 
 function getRandomLaLoRange() {
@@ -25,7 +24,7 @@ function getRandomLaLoRange() {
       country: 'United States',
       lat: getRandomLaLoRange()[0],
       long: getRandomLaLoRange()[1],
-      description: 'This is the house location'
+      description: description.description
     };
     db.saveToDb(locInfo);
     count++;
