@@ -31,11 +31,18 @@ const saveToDb = (loc) => {
 
 };
 
-const retrieveFromDb = (region, cb) => {
-  Map.find({propertyRegion: region}, (err, data)=>{
-    if (err) { console.log(err); }
-    cb(data);
-  });
+const retrieveFromDb = (item, cb) => {
+  if (item.length > 3) {
+    Map.find({propertyRegion: item}, (err, data)=>{
+      if (err) { console.log(err); }
+      cb(data);
+    });
+  } else {
+    Map.find({id: item}, {propertyCity: 1, propertyState: 1, propertyCountry: 1 }, (err, data)=>{
+      if (err) { console.log(err); }
+      cb(data);
+    });
+  }
 };
 
 module.exports.saveToDb = saveToDb;
