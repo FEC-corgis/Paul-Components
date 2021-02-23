@@ -17,11 +17,13 @@ function getRandomLaLoRange() {
 (() =>{
   let count = 1;
   while (count <= 100) {
+    let row = selectCityState();
     let locInfo = {
       id: count,
-      city: selectCityState()[0],
-      state: selectCityState()[1],
+      city: row[0],
+      state: row[1],
       country: 'United States',
+      region: row[2],
       lat: getRandomLaLoRange()[0],
       long: getRandomLaLoRange()[1],
       description: description.description

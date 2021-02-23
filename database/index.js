@@ -6,6 +6,7 @@ let mapSchema = mongoose.Schema({
   propertyCity: String, 
   propertyState: String, 
   propertyCountry: String, 
+  propertyRegion: String,
   latitude: Number,
   longitude: Number,
   description: String 
@@ -19,6 +20,7 @@ const saveToDb = (loc) => {
     propertyCity: loc.city,
     propertyState: loc.state,
     propertyCountry: loc.country,
+    propertyRegion: loc.region,
     latitude: loc.lat,
     longitude: loc.long,
     description: loc.description
@@ -26,6 +28,15 @@ const saveToDb = (loc) => {
   location.save(err=>{
     if (err) { console.log(err); }
   });
+
+};
+
+const retrieveFromDb = (region, cb) => {
+  Map.find({propertyRegion: region}, (err, data)=>{
+    if (err) { console.log(err); }
+    cb(data);
+  });
 };
 
 module.exports.saveToDb = saveToDb;
+module.exports.retrieveFromDb = retrieveFromDb;

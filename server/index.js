@@ -9,8 +9,15 @@ app.use(express.static(path.join(__dirname, '../client')));
 app.use(bp.urlencoded({extended: true}));
 app.use(bp.json());
 
-app.get('/map/:id', (req,res)=>{
+app.get('/map/:id/', (req, res)=>{
   res.send('mapppppp');
+});
+
+app.get('/cityStateCountry/', (req, res)=>{
+  console.log(req.query.region);
+  db.retrieveFromDb(req.query.region, (data)=>{
+    res.send(data);
+  });
 });
 
 app.listen(port, ()=>console.log('Server is listening on port ' + port));
