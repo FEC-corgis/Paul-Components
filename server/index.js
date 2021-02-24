@@ -2,12 +2,14 @@ const express = require('express');
 const db = require('../database/');
 const port = 4454;
 const app = express();
+const cors = require('cors');
 
 const bp = require('body-parser');
 const path = require('path');
 app.use('/rooms/:id', express.static(path.join(__dirname, '..', '/client')));
 app.use(bp.urlencoded({extended: true}));
 app.use(bp.json());
+app.use(cors());
 
 app.get('/map/:id/', (req, res)=>{
   let {id} = req.params;
