@@ -31,6 +31,13 @@ const saveToDb = (loc) => {
 
 };
 
+const retrieveById = (pId, cb) => {
+  Map.find({id: pId}, (err, data)=>{
+    if (err) { console.log(err); }
+    cb(data);
+  });
+};
+
 const retrieveFromDb = (item, cb) => {
   if (item.length > 3) {
     Map.find({propertyRegion: item}, (err, data)=>{
@@ -47,3 +54,4 @@ const retrieveFromDb = (item, cb) => {
 
 module.exports.saveToDb = saveToDb;
 module.exports.retrieveFromDb = retrieveFromDb;
+module.exports.retrieveById = retrieveById;

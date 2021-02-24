@@ -5,14 +5,16 @@ const app = express();
 
 const bp = require('body-parser');
 const path = require('path');
-app.use(express.static(path.join(__dirname, '..', '/client')));
+app.use('/rooms/:id', express.static(path.join(__dirname, '..', '/client')));
 app.use(bp.urlencoded({extended: true}));
 app.use(bp.json());
 
 app.get('/map/:id/', (req, res)=>{
-  res.send('mapppppp');
+  let {id} = req.params;
+  db.retrieveById(id, (data)=>{
+    res.send(data);
+  });
 });
-
 
 //endpoint for Jenny and Dane ex ?region=west || ?id=12
 app.get('/location/', (req, res)=>{
