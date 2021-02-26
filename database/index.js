@@ -17,10 +17,10 @@ let Map = mongoose.model('Map', mapSchema);
 const saveToDb = (loc) => {
   let location = new Map({
     id: loc.id,
-    propertyCity: loc.city,
-    propertyState: loc.state,
-    propertyCountry: loc.country,
-    propertyRegion: loc.region,
+    city: loc.city,
+    state: loc.state,
+    country: loc.country,
+    region: loc.region,
     latitude: loc.lat,
     longitude: loc.long,
     description: loc.description

@@ -26,7 +26,7 @@ app.get('/location/:id/', (req, res)=>{
   });
 });
 
-app.get('/region/:id', (req,res)=>{
+app.get('/region/:id', (req, res)=>{
   let {id} = req.params;
   db.retrieveRegion(id, (data) =>{
     res.send(data);
