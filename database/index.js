@@ -39,7 +39,7 @@ const retrieveById = (pId, cb) => {
 };
 
 const retrieveFromDb = (item, cb) => {
-  Map.find({id: item}, {propertyCity: 1, propertyState: 1, propertyCountry: 1 }, (err, data)=>{
+  Map.find({id: item}, {city: 1, state: 1, country: 1 }, (err, data)=>{
     if (err) { console.log(err); }
     cb(data);
   });
