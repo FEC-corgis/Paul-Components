@@ -3,10 +3,10 @@ mongoose.connect('mongodb://localhost/maps');
 
 let mapSchema = mongoose.Schema({
   id: Number,
-  propertyCity: String, 
-  propertyState: String, 
-  propertyCountry: String, 
-  propertyRegion: String,
+  city: String, 
+  state: String, 
+  country: String, 
+  region: String,
   latitude: Number,
   longitude: Number,
   description: String 

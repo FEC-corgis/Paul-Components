@@ -20,7 +20,7 @@
     color: rgb(34, 34, 34);
     display: flex;
     flex-wrap: wrap;
-    justify-content: flex-start;
+    justify-content: center;
     margin-left: 0px;
     margin-right: 0px;
     max-width: none;
@@ -30,6 +30,7 @@
     width: 1674px;
 }
 .contentContainer{
+  border-top: 1px solid rgb(221,221,221);
   box-sizing: border-box;
   color: rgb(34, 34, 34);
   display: block;
@@ -38,7 +39,6 @@
   max-width: 1128px;
   height: 823px;
   width: 1128px;
-  border-bottom: 1px solid rgb(221,221,221);
 }
 .headerTitle{
   padding-top: 24px;
@@ -49,7 +49,7 @@
 }
 .cityStateCountry{
     display: block;
-    font-size: 16px;
+    font-size: 1em;
     font-weight: 600;
     height: 20px;
     line-height: 20px;
@@ -89,4 +89,14 @@
 }
 .mapContainer{
     height:480px;
+}
+
+/* marker */
+.marker {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 50px;
+    height: 50px;
+    z-index: 999;
 }

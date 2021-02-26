@@ -1,24 +1,21 @@
 import React, {useState, useEffect, useRef} from 'react';
 import ReactDOM, {render} from 'react-dom';
 import {Route, BrowserRouter as Router} from 'react-router-dom';
-import GoogleMapReact from 'google-map-react';
+import GoogleMapReact, {Marker} from 'google-map-react';
 import {getDetes} from '../helper/api';
 import './map.css';
 
 const Map = (props) => {
   let locationSection;
   const [locationDetes, setLocationDetes] = useState([]);
-  const [mapPos, setMapPos] = useState({center: {lat: 40.73, lng: -73.93}, zoom: 12});
 
   const updateLocationDetes = () => getDetes(props.match.params.id)
     .then(data => setLocationDetes(data));
-
+  
   useEffect(()=>{
     updateLocationDetes();
   }, []);
 
-
-  
   locationDetes[0] ?
     locationSection = (
       <div className="locationContainer">
@@ -28,19 +25,19 @@ const Map = (props) => {
             <div className="mapContainer">
               <GoogleMapReact 
                 bootstrapURLKeys={{
-                  key: 'AIzaSyDjzD_RyxE02CcfG_ZXLNMro2Ek4OFkgzo', 
+                  key: 'AIzaSyDN4lPQ-CK--_tZxB-oBxfKscxh8WleL8w', 
                   language: 'en'
                 }}
                 mapContainerStyle={{
                   height: '480px',
                   width: '1128px'
                 }}
-                defaultCenter={mapPos.center}
-                center={mapPos.center}
-                defaultZoom={mapPos.zoom}
+                defaultCenter={{lat: locationDetes[0].latitude, lng: locationDetes[0].longitude}}
+                center={{lat: locationDetes[0].latitude, lng: locationDetes[0].longitude}}
+                defaultZoom={16}
               />
             </div>
-            <div className="cityStateCountry"><h1>{locationDetes[0].propertyCity}, {locationDetes[0].propertyState}, {locationDetes[0].propertyCountry}</h1></div>
+            <div className="cityStateCountry"><h1>{locationDetes[0].city}, {locationDetes[0].state}, {locationDetes[0].country}</h1></div>
             <div className="locationDescription">{locationDetes[0].description}</div>
             <a className="mapBtn" href="">More about the location</a>
           </div>
