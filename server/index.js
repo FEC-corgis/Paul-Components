@@ -22,7 +22,7 @@ app.get('/map/:id/', (req, res)=>{
 app.get('/location/:id/', (req, res)=>{
   let {id} = req.params;
   db.retrieveFromDb(id, (data)=>{
-    res.send(data);
+    res.send(data[0]);
   });
 });
 
