@@ -18,18 +18,19 @@ app.get('/map/:id/', (req, res)=>{
   });
 });
 
-//endpoint for Jenny and Dane ex ?region=west || ?id=12
-app.get('/location/', (req, res)=>{
-  if (req.query.region) {
-    db.retrieveFromDb(req.query.region, (data)=>{
-      res.send(data);
-    });
-  }
-  if (req.query.id) {
-    db.retrieveFromDb(req.query.id, (data)=>{
-      res.send(data);
-    });
-  }
+//dane 
+app.get('/location/:id/', (req, res)=>{
+  let {id} = req.params;
+  db.retrieveFromDb(id, (data)=>{
+    res.send(data);
+  });
+});
+
+app.get('/region/:id', (req,res)=>{
+  let {id} = req.params;
+  db.retrieveRegion(id, (data) =>{
+    res.send(data);
+  });
 });
 
 app.listen(port, ()=>console.log('Server is listening on port ' + port));

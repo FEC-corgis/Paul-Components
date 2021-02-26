@@ -39,19 +39,23 @@ const retrieveById = (pId, cb) => {
 };
 
 const retrieveFromDb = (item, cb) => {
-  if (item.length > 3) {
-    Map.find({propertyRegion: item}, (err, data)=>{
+  Map.find({id: item}, {propertyCity: 1, propertyState: 1, propertyCountry: 1 }, (err, data)=>{
+    if (err) { console.log(err); }
+    cb(data);
+  });
+};
+
+const retrieveRegion = (pId, cb) => {
+  Map.find({id: pId}, {propertyRegion: 1}, (err, data) =>{
+    if (err) { console.log(err); }
+    Map.find({propertyRegion: data[0].propertyRegion}, (err, d) =>{
       if (err) { console.log(err); }
-      cb(data);
+      cb(d);
     });
-  } else {
-    Map.find({id: item}, {propertyCity: 1, propertyState: 1, propertyCountry: 1 }, (err, data)=>{
-      if (err) { console.log(err); }
-      cb(data);
-    });
-  }
+  });
 };
 
 module.exports.saveToDb = saveToDb;
 module.exports.retrieveFromDb = retrieveFromDb;
 module.exports.retrieveById = retrieveById;
+module.exports.retrieveRegion = retrieveRegion;
