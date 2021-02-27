@@ -3,14 +3,20 @@ import ReactDOM, {render} from 'react-dom';
 import {Route, BrowserRouter as Router} from 'react-router-dom';
 import GoogleMapReact, {Marker} from 'google-map-react';
 import {getDetes} from '../helper/api';
+import About from './modal/About.jsx';
 import './map.css';
 
 const Map = (props) => {
   let locationSection;
   const [locationDetes, setLocationDetes] = useState([]);
+  const [aboutIsOpen, setAboutIsOpen] = useState(false);
 
   const updateLocationDetes = () => getDetes(props.match.params.id)
     .then(data => setLocationDetes(data));
+
+  const closeModal = () =>{
+    setAboutIsOpen(!aboutIsOpen);
+  };
   
   useEffect(()=>{
     updateLocationDetes();
@@ -39,9 +45,10 @@ const Map = (props) => {
             </div>
             <div className="cityStateCountry"><h1>{locationDetes[0].city}, {locationDetes[0].state}, {locationDetes[0].country}</h1></div>
             <div className="locationDescription">{locationDetes[0].description}</div>
-            <a className="mapBtn" href="">More about the location</a>
+            <button className="mapBtn" onClick={()=>setAboutIsOpen(!aboutIsOpen)}>More about the location</button>
           </div>
         </div>
+        {aboutIsOpen ? <About locationDetes={locationDetes} closeModal={closeModal}/> : null}
       </div>
     ) : locationSection = null;
 
