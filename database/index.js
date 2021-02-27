@@ -46,9 +46,9 @@ const retrieveFromDb = (item, cb) => {
 };
 
 const retrieveRegion = (pId, cb) => {
-  Map.find({id: pId}, {propertyRegion: 1}, (err, data) =>{
+  Map.find({id: pId}, {region: 1}, (err, data) =>{
     if (err) { console.log(err); }
-    Map.find({propertyRegion: data[0].propertyRegion}, (err, d) =>{
+    Map.find({region: data[0].region}, (err, d) =>{
       if (err) { console.log(err); }
       cb(d);
     });
